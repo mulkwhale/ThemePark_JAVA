@@ -52,7 +52,6 @@ public class Main {
 				id = scanner.nextLine();
 				birth = id.substring(0, 6);
 				gene = id.substring(6, 7);
-				
 				birthInt = Integer.parseInt(birth);
 				geneInt = Integer.parseInt(gene);
 				System.out.println("시간대를 선택하세요\n1. 1Day\n2. After4");
@@ -63,7 +62,6 @@ public class Main {
 				special = scanner.nextInt();
 				
 				ageResult = age(birthInt, geneInt);
-				System.out.println(ageResult);
 				
 				if (order > 1) {
 					switch(special){
@@ -71,7 +69,6 @@ public class Main {
 						case 3:
 						case 4:
 							coPriceResult = companionPrice(ticket, day, special);
-							System.out.println("동반자 값 " + coPriceResult);
 						break;	
 					}
 				}
@@ -140,14 +137,11 @@ public class Main {
 			System.out.println("동반인의 주민번호를 입력하세요");
 			coId = scanner.nextLine();
 			coBirth = coId.substring(0, 6);
-			System.out.println(coBirth);
 			coGene = coId.substring(6, 7);
-			System.out.println(coGene);
 			coBirthInt = Integer.parseInt(coBirth);
 			coGeneInt = Integer.parseInt(coGene);
 			
 			coAgeResult = age(coBirthInt, coGeneInt);
-			System.out.println("동반자 나이 " + coAgeResult);
 		}
 		
 		if (ticket == 1) {
