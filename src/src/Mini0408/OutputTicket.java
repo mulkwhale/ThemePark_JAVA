@@ -51,54 +51,17 @@ public class OutputTicket {
 		System.out.println("티켓 발권을 종료합니다. 감사합니다.\n");
 		System.out.println("=================== 롯데월드 ===================");
 		for (int index = 0; index < orderList.size(); index++) {
-			if (orderList.get(index).getTicketType() == StaticValue.TICKET_ALL) {
-				System.out.print(calTicket.inputTicket.orderItem.getLineTicketType()[0] + " ");
-			} else {
-				System.out.print(calTicket.inputTicket.orderItem.getLineTicketType()[1] + " ");
-			}
-			if (orderList.get(index).getAgeResult() < StaticValue.YOUNGER_BABY)  {
-				System.out.print(calTicket.inputTicket.orderItem.getLineAgeResult()[0] + " ");
-				calTicket.inputTicket.orderItem.setIndexAge(0);
-			} else if (orderList.get(index).getAgeResult() < StaticValue.OLDER_BABY) {
-				System.out.print(calTicket.inputTicket.orderItem.getLineAgeResult()[1] + " ");
-				calTicket.inputTicket.orderItem.setIndexAge(1);
-			} else if (orderList.get(index).getAgeResult() < StaticValue.CHILD) {
-				System.out.print(calTicket.inputTicket.orderItem.getLineAgeResult()[2] + " ");
-				calTicket.inputTicket.orderItem.setIndexAge(2);
-			} else if (orderList.get(index).getAgeResult() < StaticValue.TEEN) {
-				System.out.print(calTicket.inputTicket.orderItem.getLineAgeResult()[3] + " ");
-				calTicket.inputTicket.orderItem.setIndexAge(3);
-			} else if (orderList.get(index).getAgeResult() < StaticValue.ADULT) {
-				System.out.print(calTicket.inputTicket.orderItem.getLineAgeResult()[4] + " ");
-				calTicket.inputTicket.orderItem.setIndexAge(4);
-			} else {
-				System.out.print(calTicket.inputTicket.orderItem.getLineAgeResult()[5] + " ");
-				calTicket.inputTicket.orderItem.setIndexAge(5);
-			}
-			if (orderList.get(index).getDay() == StaticValue.ONEDAY) {
-				System.out.print(calTicket.inputTicket.orderItem.getLineDay()[0] + " ");
-			} else {
-				System.out.print(calTicket.inputTicket.orderItem.getLineDay()[1] + " ");
-			}
+			System.out.print(orderList.get(index).getTicketTypeToString() + " ");
+			System.out.print(orderList.get(index).getAgeResultToString() + " ");
+			System.out.print(orderList.get(index).getDayToString() + " ");
 			System.out.print("X     " + orderList.get(index).getOrderCount() + "     ");
 			System.out.print(orderList.get(index).getLastPriceResult() + "원");
 			
 			temp += orderList.get(index).getLastPriceResult();
 			calTicket.inputTicket.orderItem.setTotalPrice(temp);
 			
-			if (orderList.get(index).getAdvantageType() == StaticValue.NO_ADVENTAGE) {
-				System.out.print(" * 우대적용 " + calTicket.inputTicket.orderItem.getLineAdvantageType()[0]);
-			} else if (orderList.get(index).getAdvantageType() == StaticValue.ADVENTAGE_DISABLED) {
-				System.out.print(" * " + calTicket.inputTicket.orderItem.getLineAdvantageType()[1] + " 우대적용");
-			} else if (orderList.get(index).getAdvantageType() == StaticValue.ADVENTAGE_NATIONAL_MERIT) {
-				System.out.print(" * " + calTicket.inputTicket.orderItem.getLineAdvantageType()[2] + " 우대적용");
-			} else if (orderList.get(index).getAdvantageType() == StaticValue.ADVENTAGE_ARMY) {
-				System.out.print(" * " + calTicket.inputTicket.orderItem.getLineAdvantageType()[3] + " 우대적용");
-			} else if (orderList.get(index).getAdvantageType() == StaticValue.ADVENTAGE_PREGNANT) {
-				System.out.print(" * " + calTicket.inputTicket.orderItem.getLineAdvantageType()[4] + " 우대적용");
-			} else if (orderList.get(index).getAdvantageType() == StaticValue.ADVENTAGE_CHILDREN) {
-				System.out.print(" * " + calTicket.inputTicket.orderItem.getLineAdvantageType()[5] + " 우대적용");
-			} 
+			System.out.print(" * 우대적용 " + orderList.get(index).getAdvantageTypeToString());
+			System.out.println();
 		}
 		System.out.println("\n입장료 총액은 " + calTicket.inputTicket.orderItem.getTotalPrice() + "원 입니다.");
 		System.out.println("==============================================\n");
@@ -124,6 +87,11 @@ public class OutputTicket {
 		System.out.println("날짜\t\t권종\t연령구분\t\t시간대\t수량\t가격\t우대사항");
 		while ((str = reader.readLine()) != null) {
 			line = str.split(",");
+			
+			/*for (int index = 0; index < line.length; index++){
+				System.out.print(line[index] + "\t");
+			}
+			System.out.println();*/
 			
 			if (line.length > 6) {
 				if (line[1].equals("종합이용권") && line[3].equals("1Day")) {
