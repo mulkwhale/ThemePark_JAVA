@@ -269,9 +269,9 @@ public class CalTicket {
 		int priceResult = 0;
 		
 		if (coPriceResult != 0) {
-			if (special == 2 || special == 3) {
+			if (special == StaticValue.ADVENTAGE_DISABLED || special == StaticValue.ADVENTAGE_NATIONAL_MERIT) {
 				priceResult = (int) (price / 0.5 * (order - 2) + coPrice + price);
-			} else if (special == 4) {
+			} else if (special == StaticValue.ADVENTAGE_ARMY) {
 				if (day == 1) {
 					restPrice = StaticValue.ADULT_1DAY_ALL;
 				} else {
