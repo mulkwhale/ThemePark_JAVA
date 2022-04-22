@@ -1,10 +1,19 @@
 package Mini0408;
 
+import java.io.IOException;
+
 public class TicketSystemClass {
-	public OutputTicket outputTicket = new OutputTicket();
+	public OrderData orderItem = new OrderData();
+	public InputTicket inputTicket = new InputTicket(orderItem);
+	public CalTicket calTicket = new CalTicket(inputTicket);
+	public OutputTicket outputTicket = new OutputTicket(calTicket);
 	
-	void startSystem() {
-		doWhile();
+	void startSystem() throws IOException {
+		//doWhile();
+		outputTicket.csvResult();
+		outputTicket.ticketTypeResult();
+		outputTicket.dayResult();
+		outputTicket.specialResult();
 	}
 	
 	void calMyAge() {
@@ -51,11 +60,10 @@ public class TicketSystemClass {
 		}
 	}
 	
-	void continueProcess() {
+	void continueProcess() throws IOException {
+		
 		while(true){
 			int continueNumber;
-			
-			outputTicket.calTicket.inputTicket.inputData();
 			
 			calMyAge();
 							
@@ -66,7 +74,11 @@ public class TicketSystemClass {
 			calLastPrice();
 			
 			outputTicket.customer();
+			
 			specialResult();
+			
+			System.out.println(outputTicket.calTicket.inputTicket.orderItem.getLine());
+			
 			continueNumber = outputTicket.price();
 			
 			if (continueNumber == StaticValue.CONTINUE_TICKET) {
@@ -78,7 +90,8 @@ public class TicketSystemClass {
 			}
 		}
 	}
-	void doWhile() {
+	
+	void doWhile() throws IOException {
 		do{
 			continueProcess();
 			

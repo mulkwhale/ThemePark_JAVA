@@ -3,30 +3,36 @@ package Mini0408;
 import java.util.Calendar;
 
 public class CalTicket {	
-	InputTicket inputTicket = new InputTicket();
+	public InputTicket inputTicket;
+	public CalTicket(InputTicket inputTicket) {
+		this.inputTicket = inputTicket;
+	}
 	
 	int age(int birth, int id) {
 		Calendar cal = Calendar.getInstance();
 		
 		int interAge = 0;
 				
-		int curr_year;
-		int curr_month;
-		int curr_day;
+		int currYear;
+		int currMonth;
+		int currDay;
 		
 		// 만나이 계산
-		curr_year = cal.get(Calendar.YEAR);
-		curr_month = cal.get(Calendar.MONTH) + 1;
-		curr_day = cal.get(Calendar.DAY_OF_MONTH);
+		currYear = cal.get(Calendar.YEAR);
+		currMonth = cal.get(Calendar.MONTH) + 1;
+		currDay = cal.get(Calendar.DAY_OF_MONTH);
 		
 		if (id < 3) {
-			interAge = curr_year - (1900 + birth / 10000) - 1;
+			interAge = currYear - (1900 + birth / 10000) - 1;
 		} else {
-			interAge = curr_year - (2000 + birth / 10000) - 1;
+			interAge = currYear - (2000 + birth / 10000) - 1;
 		}
-		if (birth % 10000 <= (curr_month * 100 + curr_day)) {
+		if (birth % 10000 <= (currMonth * 100 + currDay)) {
 			interAge++;
 		}
+		
+		// 전체 날짜
+		//inputTicket.orderItem.setDate(currYear * 10000 + currMonth * 100 + currDay);
 		
 		return interAge;
 	}
