@@ -72,8 +72,7 @@ public class InputTicket {
 	}
 	
 	void saveData() throws IOException {
-		FileWriter fw = new FileWriter("C:\\Users\\°øÀ±Á¤PC\\Desktop\\report.csv", true);
-		System.out.println("index age saveData " + orderItem.getIndexAge());
+		FileWriter fw = new FileWriter("C:\\Users\\°øÀ±Á¤\\Desktop\\report.csv", true);
 		
 		orderItem.setLine("\n" + Integer.toString(orderItem.getDate())); // ³¯Â¥
 		orderItem.setLine("," +
