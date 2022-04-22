@@ -99,10 +99,7 @@ public class OutputTicket {
 			} else if (orderList.get(index).getAdvantageType() == StaticValue.ADVENTAGE_CHILDREN) {
 				System.out.print(" * " + calTicket.inputTicket.orderItem.getLineAdvantageType()[5] + " 우대적용");
 			} 
-			
-			System.out.println("index age " + calTicket.inputTicket.orderItem.getIndexAge());
 		}
-		System.out.println("indexAge for문 밖 " + calTicket.inputTicket.orderItem.getIndexAge());
 		System.out.println("\n입장료 총액은 " + calTicket.inputTicket.orderItem.getTotalPrice() + "원 입니다.");
 		System.out.println("==============================================\n");
 	}
@@ -120,7 +117,7 @@ public class OutputTicket {
 	}
 	
 	void csvResult() throws IOException{
-		BufferedReader reader = new BufferedReader(new FileReader("C:\\Users\\공윤정PC\\Desktop\\report.csv"));
+		BufferedReader reader = new BufferedReader(new FileReader("C:\\Users\\공윤정\\Desktop\\report.csv"));
 		String str;
 		String[] line;
 		System.out.println("============================= report.csv =============================");
@@ -169,7 +166,7 @@ public class OutputTicket {
 	
 	void dayResult() throws IOException{
 		int[] dateSales = new int[date.size()];
-		BufferedReader reader = new BufferedReader(new FileReader("C:\\Users\\공윤정PC\\Desktop\\report.csv"));
+		BufferedReader reader = new BufferedReader(new FileReader("C:\\Users\\공윤정\\Desktop\\report.csv"));
 		String str;
 		String[] line;
 		
@@ -202,7 +199,7 @@ public class OutputTicket {
 	
 	void specialResult() throws IOException{
 		int[] specialSales = new int[special.size()];
-		BufferedReader reader = new BufferedReader(new FileReader("C:\\Users\\공윤정PC\\Desktop\\report.csv"));
+		BufferedReader reader = new BufferedReader(new FileReader("C:\\Users\\공윤정\\Desktop\\report.csv"));
 		String str;
 		String[] line;
 		int sum = 0;
