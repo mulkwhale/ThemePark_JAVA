@@ -9,11 +9,11 @@ public class TicketSystemClass {
 	public OutputTicket outputTicket = new OutputTicket(calTicket);
 	
 	void startSystem() throws IOException {
-		//doWhile();
-		outputTicket.csvResult();
+		doWhile();
+		/*outputTicket.csvResult();
 		outputTicket.ticketTypeResult();
 		outputTicket.dayResult();
-		outputTicket.specialResult();
+		outputTicket.specialResult();*/
 	}
 	
 	void calMyAge() {
@@ -65,6 +65,8 @@ public class TicketSystemClass {
 		while(true){
 			int continueNumber;
 			
+			outputTicket.calTicket.inputTicket.inputData();
+			
 			calMyAge();
 							
 			checkCompanion();
@@ -77,7 +79,7 @@ public class TicketSystemClass {
 			
 			specialResult();
 			
-			System.out.println(outputTicket.calTicket.inputTicket.orderItem.getLine());
+			//outputTicket.calTicket.inputTicket.saveData();
 			
 			continueNumber = outputTicket.price();
 			
