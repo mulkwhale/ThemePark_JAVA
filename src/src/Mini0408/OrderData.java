@@ -3,7 +3,6 @@ package Mini0408;
 public class OrderData {
 	private int ticketType;
 	private int day;
-	private String IDNumber;
 	private int orderCount;
 	private int advantageType;
 	private int birthInt;
@@ -23,7 +22,6 @@ public class OrderData {
 	private int date;
 	private int indexAge;
 	private int countTicketAll;
-
 
 	public int getCountTicketAll() {
 		return countTicketAll;
@@ -114,20 +112,40 @@ public class OrderData {
 	public int getTicketType() {
 		return ticketType;
 	}
+	
+	public String getTicketTypeToString() {
+		String str = null;
+		
+		if (ticketType == 1) {
+			str = "종합이용권";
+		} else if (ticketType == 2) {
+			str = "파크이용권";
+		}
+		
+		return str;
+	}
+	
 	public void setTicketType(int ticketType) {
 		this.ticketType = ticketType;
 	}
 	public int getDay() {
 		return day;
 	}
+	
+	public String getDayToString() {
+		String str = null;
+		
+		if (day == 1) {
+			str = "1Day";
+		} else if (day == 2) {
+			str = "After4";
+		}
+		
+		return str;
+	}
+	
 	public void setDay(int day) {
 		this.day = day;
-	}
-	public String getIDNumber() {
-		return IDNumber;
-	}
-	public void setIDNumber(String iDNumber) {
-		IDNumber = iDNumber;
 	}
 	public int getOrderCount() {
 		return orderCount;
@@ -138,12 +156,39 @@ public class OrderData {
 	public int getAdvantageType() {
 		return advantageType;
 	}
+	
+	public String getAdvantageTypeToString() {
+		String str = null;
+		
+		if (advantageType == 1) {
+			str = "없음";
+		} else if (advantageType == 2) {
+			str = "장애인";
+		} else if (advantageType == 3) {
+			str = "국가유공자";
+		} else if (advantageType == 4) {
+			str = "휴가장병";
+		} else if (advantageType == 5) {
+			str = "임산부";
+		} else if (advantageType == 6) {
+			str = "다둥이 행복카드";
+		}
+		
+		return str;
+	}
+	
 	public void setAdvantageType(int advantageType) {
 		this.advantageType = advantageType;
 	}
 	public int getBirthInt() {
 		return birthInt;
 	}
+	
+	public void setIDString(String idString) {
+		birthInt = Integer.parseInt(idString.substring(0, 6));
+		geneInt = Integer.parseInt(idString.substring(6, 7));
+	}
+	
 	public void setBirthInt(int birthInt) {
 		this.birthInt = birthInt;
 	}
@@ -162,6 +207,33 @@ public class OrderData {
 	public int getAgeResult() {
 		return ageResult;
 	}
+	
+	public String getAgeResultToString() {
+		String str = null;
+		
+		if (ageResult < StaticValue.YOUNGER_BABY)  {
+			str = "12개월 미만 베이비";
+			setIndexAge(0);
+		} else if (ageResult < StaticValue.OLDER_BABY) {
+			str = "36개월 미만 베이비";
+			setIndexAge(1);
+		} else if (ageResult < StaticValue.CHILD) {
+			str = "어린이";
+			setIndexAge(2);
+		} else if (ageResult < StaticValue.TEEN) {
+			str = "청소년";
+			setIndexAge(3);
+		} else if (ageResult < StaticValue.ADULT) {
+			str = "어른";
+			setIndexAge(4);
+		} else {
+			str = "65세 이상 어른";
+			setIndexAge(5);
+		}
+		
+		return str;
+	}
+	
 	public void setAgeResult(int ageResult) {
 		this.ageResult = ageResult;
 	}
